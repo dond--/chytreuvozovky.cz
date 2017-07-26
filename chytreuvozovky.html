@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="cz">
+<head>
+<meta charset="utf-8" />
+<meta name="description" content="Inteligentní uvozovky pro inteligentní lidi" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+<meta name="author" content="dond" />
+<title>Inteligentní uvozovky pro inteligentní lidi</title>
+<link rel="shortcut icon" type="image/png" href="./favicon.png"/><!-- ### check URL ### -->
+<!-- <meta property="og:title" content="Inteligentní uvozovky pro inteligentní lidi" /> -->
+<!-- <meta property="og:type" content="website" /> -->
+<!-- <meta property="og:image" content="./open-graph-image.png" /> --><!-- ### check URL ### -->
+<style type="text/css">
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
+blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em,
+img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i,
+center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption,
+tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section,
+summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+html { line-height: 1; }
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle; }
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+a img { border: none; }
+article, aside, details, figcaption, figure, footer, header, hgroup, menu,
+nav, section, summary {
+  display: block;
+}
+body {
+  width: 100%;
+  zoom: 1;
+  background: #fff;
+}
+body:before, body:after {
+  content: "";
+  display: table;
+}
+body:after { clear: both; }
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/*  BASE  */
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #222;
+	padding: 40px 0;
+}
+p {
+  font-size: 1.4em;
+  line-height: 1.5em;
+  margin-bottom: 1em;
+}
+a {
+  color: #3d9ecf;
+  -webkit-transition: 0.25s color;
+  -moz-transition: 0.25s color;
+  -o-transition: 0.25s color;
+  transition: 0.25s color;
+}
+a:hover, a:active { color: #000; }
+#compare { max-width: 980px; margin: 0 auto; }
+.mark {
+  display: block;
+  width: 60px;
+  height: 60px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -o-border-radius: 30px;
+  -ms-border-radius: 30px;
+  border-radius: 30px;
+  background: #88b716;
+  color: #fff;
+  text-align: center;
+  margin: 0 auto 20px;
+  font-size: 100px;
+}
+h1 {
+  text-align: center;
+  padding-bottom: 2em;
+  margin-bottom: 4em;
+  border-bottom: 1px solid #ddd;
+  font-weight: 900;
+  color: #666;
+}
+h2 {
+	font-size: 7.6em;
+	font-weight: 900;
+	text-align: center;
+  margin-bottom: 0.5em;
+  text-rendering: optimizeLegibility;
+}
+.footer {
+  text-align: center;
+  padding: 2em 0;
+  border-top: 1px solid #ddd;
+  color: #666;
+}
+.footer p {
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: 0.9em;
+}
+.disclaimer {
+  padding: 2em 0;
+  margin-top: 4em;
+  border-top: 1px solid #ddd;
+  color: #666;
+}
+.disclaimer p {
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: 0.9em;
+}
+.smart { color: #88b716; }
+.dumb { color: #dd4b39; }
+kbd {
+	background-color: #F9F9F9;
+	background-image: -webkit-linear-gradient(top, #EEE, #F9F9F9, #EEE);
+	box-shadow: 1px 2px 2px #DDD;
+	border: 1px solid #AAA;
+	border-radius: 2px;
+	padding: 2px 4px;
+	color: #333;
+}
+.bigpunc {
+	display: block;
+	font-size: 12.5em;
+	text-align: center;
+	overflow: hidden;
+	line-height: 0.8em;
+	height: 60px !important;
+}
+.bigpunc.lower {
+  height: 1em !important;
+  position: absolute;
+  width: 120px;
+  top: -0.4em;
+}
+.bigpuncdef {
+	display: block;
+	font-size: 0.9em;
+	text-align: center;
+  padding: 0 1em;/* enforce line break */
+	color: #888;
+  margin-top: .5em;
+}
+code {
+	font-family: Inconsolata, Monaco, Consolas, "Lucida Console", monospace;
+	font-size: 1em;
+  font-size: 0.9em;
+  margin: 0 3px;
+	color: #3d9ecf;
+	padding: 2px 4px;
+  background: #F8F8F8;
+  border: 1px solid #ddd;
+}
+table {
+  max-width: 100%;
+  background-color: transparent;
+}
+th { text-align: left; }
+th, td { width: 20%; }
+.table {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.table thead > tr > th,
+.table tbody > tr > th,
+.table tfoot > tr > th,
+.table thead > tr > td,
+.table tbody > tr > td,
+.table tfoot > tr > td {
+  padding: 14px;
+  line-height: 1.428571429;
+  vertical-align: middle;
+  border-top: 1px solid #dddddd;
+}
+.table thead > tr > th {
+  vertical-align: top;
+  font-size: 1.75em;
+  border-bottom: 2px solid #dddddd;
+}
+.table thead > tr > th span {
+  display: block;
+  font-weight: normal;
+  font-size: 0.5em;
+  color: #888;
+}
+.table thead:first-child tr:first-child th,
+.table thead:first-child tr:first-child td {
+  border-top: 0;
+}
+.table tbody + tbody { border-top: 2px solid #dddddd; }
+.system {
+  font-weight: 700;
+  margin-right: 0.2em;
+}
+.thewhat, ul, .alts {
+  width: 80%;
+  margin: 0 auto 2em;
+}
+.also {
+  font-size: 0.9em;
+  color: #888;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.resources li {
+  margin-bottom: 1em;
+  line-height: 1.4em;
+}
+h3 {
+  text-align: center;
+  padding: 3em 0.5em 1em;
+  margin-bottom: 1.4em;
+  border-bottom: 1px solid #ddd;
+  font-weight: 900;
+  font-size: 1.6em;
+  line-height: 1.4em;
+}
+.first { padding-top: 1em; }
+.altblock {
+  width: 80%;
+  margin: 0 auto 1.5em;
+  text-align: center;
+}
+.alt1, .alt2 { font-size: 5.8em; }
+.alt1 { margin-right: 10px; }
+.alt2 { margin-left: 10px; }
+.alt1 .smart {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-size: 85px;
+}
+.alt2 .smart {
+  font-family: Verdana, Geneva, sans-serif !important;
+  font-size: 80px;
+}
+.primeblock {
+  width: 80%;
+  margin: 0 auto 1.5em;
+  text-align: center;
+}
+.primeblock p {
+  font-size: 1em;
+  color: #666;
+  margin-bottom: 0.25em;
+}
+.prime1, .prime2, .prime3 {
+  font-size: 2.4em;
+  display: block;
+  margin-bottom: 1em;
+}
+  /* CLEAN
+  .wf-active body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+  .wf-active h2 {
+    font-size: 8em; }
+
+  .wf-active .mark {
+    font-size: 100px; }
+
+  .wf-active .dumb,
+  .wf-active .thewhat,
+  .wf-active ul,
+  .wf-active .alts {
+    font-family: serif; }
+
+  .wf-active .smart,
+  .wf-active .bigpunc,
+  .wf-active .bigpunc.lower,
+  .wf-active .mark {
+    font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  */
+.smart,
+.bigpunc,
+.bigpunc.lower,
+.mark {
+  font-family: serif;
+}
+@media only screen and (min-width: 769px) {
+  .system { display: none; }
+  .bigpunc-wrapper {
+    width: 120px;
+    min-height: 100px;
+    text-align: left;
+    display: block;
+    position: relative;
+  }
+  th, td { width: 19%; }
+  .table thead > tr > th:first-child,
+  .table tbody > tr > td:first-child {
+    width: 13%;
+  }
+  .table thead > tr > th:nth-child(2),
+  .table tbody > tr > td:nth-child(2) {
+    width: 22%;
+  }
+  .table thead > tr > th:nth-child(4),
+  .table tbody > tr > td:nth-child(4) {
+    width: 26%;
+  }
+  .table thead > tr > th:last-child,
+  .table tbody > tr > td:last-child {
+    width: 19%;
+  }
+  .table thead > tr > th,
+  .table tbody > tr > th,
+  .table tfoot > tr > th,
+  .table thead > tr > td,
+  .table tbody > tr > td,
+  .table tfoot > tr > td {
+    padding: 14px 0;
+  }
+}
+@media only screen and (max-width: 768px) {
+  h2, .wf-active h2 { font-size: 4em; }/* CLEAN */
+  h3 { font-size: 1.2em; }
+  th { display: none; }
+  td {
+    display: block;
+    text-align: left;
+    width: 100%;
+  }
+  .table tbody > tr > td:first-child {
+    text-align: center;
+  }
+  .bigpunc-wrapper {
+    width: 100%;
+  }
+  .bigpunc { margin-top: 25px; }
+  .bigpuncdef { margin-bottom: -4em; }
+  .bigpunc.lower {
+    position: relative;
+    width: auto;
+    margin-bottom: -.5em;
+  }
+  .bigpunc + .bigpuncdef { margin-bottom: 0; }
+  p { font-size: 1em; }
+  .alt1, .alt2 {
+    margin: 0;
+    font-size: 4em;
+    display: block;
+  }
+  .alt1 { margin-bottom: 0.25em; }
+  .alt1 .smart { font-size: 60px; }
+  .alt2 .smart { font-size: 56px; }
+}
+</style>
+<!-- CLEAN -->
+<!-- <script type="text/javascript" src="http://use.typekit.net/ese6ify.js"></script> -->
+<!-- <script type="text/javascript">try{Typekit.load()}catch(e){}</script> -->
+<script></script><!-- Google Analytics code(s) -->
+</head>
+<body class="home">
+  <div id="compare">
+    <span class="mark">&#8220;</span>
+    <h1>Inteligentní uvozovky pro inteligentní lidi</h1>
+    <h2><span class="dumb">"</span>Proč být <span class="dumb">'</span>hloupí<span class="dumb">'</span>?<span class="dumb">"</span></h2>
+    <h2><span class="smart">&#8222;</span>Buďte inteligentní!<span class="smart">&#8220;</span></h2>
+    <h3 class="first">Správná typografie používá inteligentní (chytré) uvozovky, ne ty hloupé.</h3>
+    <p class="thewhat">&#8222;Inteligentní uvozovky&#8220; jsou symboly, které správně zobrazují uvozovky a&nbsp;apostrof a&nbsp;jsou zahnuté nebo skloněné. Naproti tomu "hloupé (nebo také přímé) uvozovky" jsou zjednodušené znaky, jejichž původním smyslem bylo ušetřit místo na klávesnici psacího stroje a&nbsp;nahradit dva symboly jedním. Kvůli nesprávným výchozím nastavením mnoha systémů se i&nbsp;dnes na mnoha webových stránkách vyskytují nesprávné symboly velmi často. Začít používat správné symboly pro uvozovky je naštěstí mnohem jednodušší, než se na první pohled zdá. Nejjednodušší způsob je použít znakovou sadu <code>utf-8</code>, v&nbsp;níž jsou správné symboly přímo definovány.</p>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>&nbsp;</th>
+          <th>Mac</th>
+          <th>Windows <span>na numerické klávesnici</span></th>
+          <th>Ubuntu</th>
+          <th>HTML entity <span>bez <code>utf-8</code></span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="bigpunc-wrapper"><span class="bigpuncdef">Jednoduchá otevírací</span><span class="bigpunc lower">‚</span></span></td>
+          <td><span class="system">Mac: </span><kbd>⌥ Opt</kbd> + <kbd>N</kbd></td>
+          <td><span class="system">Windows: </span><kbd>Alt</kbd> + <kbd>0</kbd> <kbd>1</kbd> <kbd>3</kbd> <kbd>0</kbd></td>
+          <td><span class="system">Ubuntu: </span><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>U</kbd> <kbd>2</kbd> <kbd>0</kbd> <kbd>1</kbd> <kbd>A</kbd></td>
+          <td><span class="system">HTML entity: </span><code>&amp;sbquo;</code> nebo <code>&amp;#8218;</code></td>
+        </tr>
+        <tr>
+          <td><span class="bigpunc-wrapper"><span class="bigpunc">‘</span><span class="bigpuncdef">Jednoduchá zavírací</span></span></td>
+          <td><span class="system">Mac: </span><kbd>⌥ Opt</kbd> + <kbd>H</kbd></td>
+          <td><span class="system">Windows: </span><kbd>Alt</kbd> + <kbd>0</kbd> <kbd>1</kbd> <kbd>4</kbd> <kbd>5</kbd></td>
+          <td><span class="system">Ubuntu: </span><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>U</kbd> <kbd>2</kbd> <kbd>0</kbd> <kbd>1</kbd> <kbd>8</kbd></td>
+          <td><span class="system">HTML entity: </span><code>&amp;lsquo;</code> nebo <code>&amp;#8216;</code></td>
+        </tr>
+        <tr>
+          <td><span class="bigpunc-wrapper"><span class="bigpuncdef">Dvojitá otevírací</span><span class="bigpunc lower">„</span> </span></td>
+          <td><span class="system">Mac: </span><kbd>⌥ Opt</kbd> + <kbd>⇧ Shift</kbd> + <kbd>N</kbd></td>
+          <td><span class="system">Windows: </span><kbd>Alt</kbd> + <kbd>0</kbd> <kbd>1</kbd> <kbd>3</kbd> <kbd>2</kbd></td>
+          <td><span class="system">Ubuntu: </span><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>U</kbd> <kbd>2</kbd> <kbd>0</kbd> <kbd>1</kbd> <kbd>E</kbd></td>
+          <td><span class="system">HTML entity: </span><code>&amp;bdquo;</code> nebo <code>&amp;#8222;</code></td>
+        </tr>
+        <tr>
+          <td><span class="bigpunc-wrapper"><span class="bigpunc">“</span><span class="bigpuncdef">Dvojitá zavírací</span></span></td>
+          <td><span class="system">Mac: </span><kbd>⌥ Opt</kbd> + <kbd>⇧ Shift</kbd> + <kbd>H</kbd></td>
+          <td><span class="system">Windows: </span><kbd>Alt</kbd> + <kbd>0</kbd> <kbd>1</kbd> <kbd>4</kbd> <kbd>7</kbd></td>
+          <td><span class="system">Ubuntu: </span><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>U</kbd> <kbd>2</kbd> <kbd>0</kbd> <kbd>1</kbd> <kbd>C</kbd></td>
+          <td><span class="system">HTML entity: </span><code>&amp;ldquo;</code> nebo <code>&amp;#8220;</code></td>
+        </tr>
+        <tr>
+          <td><span class="bigpunc-wrapper"><span class="bigpunc">’</span><span class="bigpuncdef">Apostrof</span></span></td>
+          <td><span class="system">Mac: </span><kbd>⌥ Opt</kbd> + <kbd>J</kbd></td>
+          <td><span class="system">Windows: </span><kbd>Alt</kbd> + <kbd>0</kbd> <kbd>1</kbd> <kbd>4</kbd> <kbd>6</kbd></td>
+          <td><span class="system">Ubuntu: </span><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>U</kbd> <kbd>2</kbd> <kbd>0</kbd> <kbd>1</kbd> <kbd>9</kbd></td>
+          <td><span class="system">HTML entity: </span><code>&amp;rsquo;</code> nebo <code>&amp;#8217;</code></td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Ne všechny inteligentní uvozovky vypadají stejně</h3>
+    <div class="altblock">
+      <span class="alt1"><span class="smart">&#8222;</span>hranaté<span class="smart">&#8220;</span> </span>
+      <span class="alt2"><span class="smart">&#8222;</span>skloněné<span class="smart">&#8220;</span></span>
+    </div>
+    <div class="alts">
+      <p>Některá písma mají symboly pro uvozovky více hranaté nebo skloněné* spíše než zahnuté, ale to je v&nbsp;pořádku. Vzhled interpunkčních znamének je estetická volba tvůrce daného písma.</p>
+      <p class="also">*zrcadlené skloněné uvozovky dříve hojně využívali písmomalíři na &#8222;firmách&#8220;, dnes už se tolik nepoužívají</p>
+    </div>
+    <h3>Mám přímé uvozovky používat pro míry?</h3>
+    <div class="primeblock">
+      <p>Anglosaské míry (stopy, palce)</p>
+      <span class="prime1">&#8222;Byl 6<span class="smart">′</span>5<span class="smart">″</span> vysoký a&nbsp;samý sval&#8220;</span>
+      <p>Zeměpisná šířka a&nbsp;délka</p>
+      <span class="prime2">40° 44<span class="smart">′</span> 54,3588<span class="smart">″</span> N; 73° 59<span class="smart">′</span> 8,3616<span class="smart">″</span> W</span>
+      <p>Časové míry (dnes už se příliš nepoužívají)</p>
+      <span class="prime3">&#8222;Desetibojařky zaběhly kolo za 1<span class="smart">′</span> 32,57<span class="smart">″</span>&#8220;</span>
+    </div>
+    <div class="alts">
+      <p>Symboly, které potřebujete, se anglicky jmenují &#8222;<a href="http://en.wikipedia.org/wiki/Prime_(symbol)">primes</a>&#8220; (český název nemají). Používají se jako interpunkční znaménka pro stopy, palce, minuty, vteřiny nebo sekundy. Vypadají jako skloněné přímé uvozovky a&nbsp;stojí buď samostatně (′), dvojitě (″) nebo trojitě (‴).</p>
+    </div>
+    <h3>Můžu vůbec někdy používat přímé uvozovky?</h3>
+    <div class="alts">
+      <p>Pokud pracujete s&nbsp;kódem, který je určen počítačům, obvykle přímé uvozovky používat musíte. V&nbsp;ostatních případech ale většinou potřeba nejsou a&nbsp;ve vašich textech by se objevit neměly, ledaže byste psali text o&nbsp;používání správné interpunkce.</p>
+    </div>
+    <h3>Další čtení &amp; zdroje</h3>
+    <ul class="resources">
+      <li><a href="https://cs.wikipedia.org/wiki/Wikipedie:Typografické_rady">Typografické rady</a> na Wikipedii přehledně popisují interpunkční znaménka používaná v&nbsp;češtině, včetně uvozovek.</li>
+      <li><a href="https://www.liteera.cz/slovnik/stupen-minuta-vterina">Stupeň, minuta a&nbsp;vteřina</a> vysvětluje použití &bdquo;primes&ldquo; ve značení jednotek.</li>
+      <li><a href="http://knihy.cpress.cz/prakticka-typografie.html">Praktická typografie</a> F. Blažka a&nbsp;P. Kočičky je dobrý prvotní zdroj informací o&nbsp;(nejen) české typografii. V&nbsp;současné době vyprodaná, dá se sehnat v&nbsp;antikvariátech.</li>
+      <li><a href="http://jablickar.cz/krotime-ceskou-klavesnici-v-os-x/">Krotíme českou klávesnici v&nbsp;OS X</a> shrnuje možnosti nastavení operačního systému macOS pro psaní typograficky správných uvozovek.</li>
+      <li><a href="http://www.zoul.cz/uvozovky/">Jak správně psát uvozovky</a> přehledně shrnuje klávesové zkratky pro uvozovky a&nbsp;apostrofy.</li>
+      <li><a href="http://www.abclinuxu.cz/poradna/linux/show/345179">Dotaz: Jak napsat české uvozovky?</a> v&nbsp;diskuzi na <a href="http://www.abclinuxu.cz/poradna/linux/show/345179">AbcLinuxu</a> odhaluje další možnosti, jak psát inteligentní uvozovky v&nbsp;různých linuxových distribucích.</li>
+      <li><a href="http://smartquotesforsmartpeople.com">Smart Quotes for Smart People</a> je původní anglickou verzí této stránky, najdete tam další zdroje informací o&nbsp;anglické typografii.</li>
+      <li><a href="http://copypastecharacter.com/">CopyPasteCharacter.com</a> je on-line aplikace (nejen) pro inteligentní uvozovky; vyžaduje Adobe Flash.</li>
+    </ul>
+    <div class="disclaimer">
+      <p>Upozornění: Výše uvedená pravidla pro interpunkci a&nbsp;klávesové zkratky platí pro češtinu. Jiné jazyky mohou používat <a href="http://en.wikipedia.org/wiki/Non-English_use_of_quotation_marks">jiná pravidla</a> a&nbsp;<a href="https://en.wikipedia.org/wiki/Quotation_marks_in_English">klávesové zkratky</a>.</p>
+    </div>
+    <div class="footer">
+      <p>Počeštěná verze stránky <a href="http://smartquotesforsmartpeople.com">Smart Quotes for Smart People</a>, kterou pro <a href="http://www.nationalpunctuationday.com/">National Punctuation Day</a> vytvořil <a href="http://jasonsantamaria.com/">Jason Santa Maria</a>. Pro češtinu upravil <a href="http://dond.cz">dond</a>, protože také on ví, že i&nbsp;vy máte na víc.</p>
+    </div>
+  </div>
+</body>
+</html>
